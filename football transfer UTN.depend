@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1584205420 source:e:\football transfer utn\main.cpp
+	<iostream>
+
+1745889095 source:e:\football transfer utn\src\funciones.cpp
+	<iostream>
+	"cstring"
+	"funciones.h"
+
+1745889095 e:\football transfer utn\include\funciones.h
+
+1745892784 source:e:\football transfer utn\src\clsjugador.cpp
+	<iostream>
+	"cstring"
+	"ClsJugador.h"
+
+1745892784 e:\football transfer utn\include\clsjugador.h
+
+1745893879 source:e:\football transfer utn\src\clsarchivojugador.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ClsArchivoJugador.h"
+
+1745893042 e:\football transfer utn\include\clsarchivojugador.h
+	"ClsJugador.h"
+
