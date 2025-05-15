@@ -34,13 +34,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/ClsArchivoJugador.h" />
-		<Unit filename="include/ClsJugador.h" />
-		<Unit filename="include/funciones.h" />
+		<Unit filename="ClsArchivoJugador.h" />
+		<Unit filename="ClsJugador.h" />
+		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/ClsArchivoJugador.cpp" />
-		<Unit filename="src/ClsJugador.cpp" />
-		<Unit filename="src/funciones.cpp" />
+		<Unit filename="ClsArchivoJugador.cpp" />
+		<Unit filename="ClsJugador.cpp" />
+		<Unit filename="funciones.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
