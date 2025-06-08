@@ -4,6 +4,7 @@ using namespace std;
 #include "funciones.h"
 #include "ClsTransferencia.h"
 #include "ArchivoTransferencias.h"
+#include "ClsArchivoEstadistica.h"
 #include "ClsArchivoClub.h"
 #include "ClsClub.h"
 #include "ClsJugador.h"
@@ -56,7 +57,7 @@ void modificarTransferencia(int id) {
 
     t.mostrar();  // mostrar actual
     cout<<"Ingrese los nuevos datos: "<<endl;
-    t.cargar();  // metodo donde ped�s nuevos datos
+    t.cargar();  // metodo donde pedís nuevos datos
     arc.modificarRegistro(t, pos);
 }
 
@@ -73,4 +74,158 @@ void listarTransferencias() {
         }
     }
 }
+
+void altaJugador() {
+    Jugador j;
+    j.cargar();  // metodo que pide al usuario los datos
+
+    ArchivoJugador arc;
+    arc.grabarRegistro(j);
+}
+
+void bajaJugador(int id) {
+   ArchivoJugador arc;
+    int pos = arc.buscarRegistro(id);
+    if (pos == -1) {
+        cout << "Jugador no encontrado.\n";
+        return;
+    }
+  Jugador j = arc.leerRegistro(pos);
+    j.setEstado(false);  // metodo que marca como inactiva
+    arc.modificarRegistro(j, pos);
+}
+
+void modificarJugador(int id) {
+    ArchivoJugador arc;
+    int pos = arc.buscarRegistro(id);
+    if (pos == -1) {
+        cout << "Jugador no encontrado.\n";
+        return;
+    }
+
+    Jugador j;
+    j = arc.leerRegistro(pos);
+
+    j.mostrar();  // mostrar actual
+    cout<<"Ingrese los nuevos datos: "<<endl;
+    j.cargar();  // metodo donde pedís nuevos datos
+    arc.modificarRegistro(j, pos);
+}
+
+void listarJugador() {
+    ArchivoJugador arc;
+    int cantRegistros = arc.contarRegistros();
+
+    for (int i = 0; i < cantRegistros; i++) {
+        Jugador j = arc.leerRegistro(i);
+        if (j.getEstado()) {  // muestra solo los verdaderos
+            j.mostrar();
+            cout << "--------------------------\n";
+        }
+    }
+}
+
+
+void altaClub() {
+    Club c;
+    c.cargar();  // metodo que pide al usuario los datos
+
+    ArchivoClub arc;
+    arc.grabarRegistro(c);
+}
+
+
+void bajaClub(int id) {
+   ArchivoClub arc;
+    int pos = arc.buscarRegistro(id);
+    if (pos == -1) {
+        cout << "Club no encontrado.\n";
+        return;
+    }
+  Club c = arc.leerRegistro(pos);
+    c.setEstado(false);  // metodo que marca como inactiva
+    arc.modificarRegistro(c, pos);
+}
+
+void modificarClub(int id) {
+    ArchivoClub arc;
+    int pos = arc.buscarRegistro(id);
+    if (pos == -1) {
+        cout << "Jugador no encontrado.\n";
+        return;
+    }
+
+    Club c;
+    c = arc.leerRegistro(pos);
+
+    c.mostrar();  // mostrar actual
+    cout<<"Ingrese los nuevos datos: "<<endl;
+    c.cargar();  // metodo donde pedís nuevos datos
+    arc.modificarRegistro(c, pos);
+}
+
+void listarClub() {
+    ArchivoClub arc;
+    int cantRegistros = arc.contarRegistros();
+
+    for (int i = 0; i < cantRegistros; i++) {
+        Club c = arc.leerRegistro(i);
+        if (c.getEstado()) {  // muestra solo los verdaderos
+            c.mostrar();
+            cout << "--------------------------\n";
+        }
+    }
+}
+
+void altaEstadisticas() {
+    Estadisticas e;
+    e.cargar();  // metodo que pide al usuario los datos
+
+    ArchivoEstadistica arc;
+    arc.grabarRegistro(e);
+}
+
+void bajaEstadisticas(int id) {
+   ArchivoEstadistica arc;
+    int pos = arc.buscarRegistro(id);
+    if (pos == -1) {
+        cout << "Club no encontrado.\n";
+        return;
+    }
+  Estadisticas e = arc.leerRegistro(pos);
+    e.setEstado(false);  // metodo que marca como inactiva
+    arc.modificarRegistro(e, pos);
+}
+
+void modificarEstadisticas(int id) {
+    ArchivoEstadistica arc;
+    int pos = arc.buscarRegistro(id);
+    if (pos == -1) {
+        cout << "Jugador no encontrado.\n";
+        return;
+    }
+
+    Estadisticas e;
+    e = arc.leerRegistro(pos);
+
+    e.mostrar();  // mostrar actual
+    cout<<"Ingrese los nuevos datos: "<<endl;
+    e.cargar();  // metodo donde pedís nuevos datos
+    arc.modificarRegistro(e, pos);
+}
+
+
+void listarEstadisticas() {
+    ArchivoEstadistica arc;
+    int cantRegistros = arc.contarRegistros();
+
+    for (int i = 0; i < cantRegistros; i++) {
+        Estadisticas e = arc.leerRegistro(i);
+        if (e.getEstado()) {  // muestra solo los verdaderos
+            e.mostrar();
+            cout << "--------------------------\n";
+        }
+    }
+}
+
 
