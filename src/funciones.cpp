@@ -11,6 +11,52 @@ using namespace std;
 #include "ClsEstadistica.h"
 #include "ClsArchivoJugador.h"
 
+
+void menuPrincipal () {
+    int opcion = -1;
+
+    while (opcion != 0) {
+        system("cls");
+        cout << "==== MENU PRINCIPAL ====" << endl;
+        cout << "1. Gestionar Transferencias" << endl;
+        cout << "2. Gestionar Jugadores" << endl;
+        cout << "3. Gestionar Estadisticas" << endl;
+        cout << "4. Gestionar Clubes" << endl;
+        cout << "0. Salir" << endl;
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1: menuTransferencia(); break;
+            case 2: menuJugador(); break;
+            case 3: menuEstadistica(); break;
+            case 4: menuClub(); break;
+            case 0: cout << "Saliendo del programa..." << endl; break;
+            default:
+                cout << "Opcion invalida. Intente de nuevo." << endl;
+                system("pause");
+                break;
+        }
+    }
+
+}
+
+void menuTransferencia(){
+
+}
+
+void menuClub(){
+
+}
+
+void menuJugador(){
+
+}
+
+void menuEstadistica(){
+
+}
+
 void cargarCadena(char *palabra, int tamano){
     int i=0;
     fflush(stdin);
@@ -34,9 +80,11 @@ void altaTransferencia() {
 
 void bajaTransferencia(int id) {
    ArchivoTransferencia arc;
+   cout<< "INGRESE ID DE TRANSFERENCIA: "<<endl;
+   cin>>id;
     int pos = arc.buscarRegistro(id);
     if (pos == -1) {
-        cout << "Transferencia no encontrada.\n";
+        cout << "Transferencia no encontrada.";
         return;
     }
   Transferencia t = arc.leerRegistro(pos);
@@ -46,9 +94,11 @@ void bajaTransferencia(int id) {
 
 void modificarTransferencia(int id) {
     ArchivoTransferencia arc;
+     cout<< "INGRESE ID DE TRANSFERENCIA: "<<endl;
+   cin>>id;
     int pos = arc.buscarRegistro(id);
     if (pos == -1) {
-        cout << "Transferencia no encontrada.\n";
+        cout << "Transferencia no encontrada.";
         return;
     }
 
@@ -85,6 +135,8 @@ void altaJugador() {
 
 void bajaJugador(int id) {
    ArchivoJugador arc;
+    cout<< "INGRESE ID DE JUGADOR: "<<endl;
+   cin>>id;
     int pos = arc.buscarRegistro(id);
     if (pos == -1) {
         cout << "Jugador no encontrado.\n";
@@ -93,6 +145,7 @@ void bajaJugador(int id) {
   Jugador j = arc.leerRegistro(pos);
     j.setEstado(false);  // metodo que marca como inactiva
     arc.modificarRegistro(j, pos);
+    cout<<"JUGADOR DADO DE BAJA."<<endl;
 }
 
 void modificarJugador(int id) {
