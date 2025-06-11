@@ -19,6 +19,13 @@ void bajaEstadisticas(int id);
 void modificarEstadisticas(int id);
 void listarEstadisticas();
 
+void menuClub();
+void menuEstadistica();
+void menuJugador();
+void menuTransferencia();
+void menuPrincipal();
+
+
 
 
 #endif // FUNCIONES_H
