@@ -1,0 +1,242 @@
+# depslib dependency file v1.0
+1584205420 source:e:\football transfer utn\main.cpp
+	<iostream>
+
+1745889095 source:e:\football transfer utn\src\funciones.cpp
+	<iostream>
+	"cstring"
+	"funciones.h"
+
+1745889095 e:\football transfer utn\include\funciones.h
+
+1745892784 source:e:\football transfer utn\src\clsjugador.cpp
+	<iostream>
+	"cstring"
+	"ClsJugador.h"
+
+1745892784 e:\football transfer utn\include\clsjugador.h
+
+1745893879 source:e:\football transfer utn\src\clsarchivojugador.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ClsArchivoJugador.h"
+
+1745893042 e:\football transfer utn\include\clsarchivojugador.h
+	"ClsJugador.h"
+
+1749037619 source:c:\users\uriel\downloads\football-transfer-utn-main\clsarchivojugador.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ClsArchivoJugador.h"
+
+1747308567 c:\users\uriel\downloads\football-transfer-utn-main\clsarchivojugador.h
+	"ClsJugador.h"
+
+1749039570 c:\users\uriel\downloads\football-transfer-utn-main\clsjugador.h
+	"Fecha.h"
+
+1749039577 source:c:\users\uriel\downloads\football-transfer-utn-main\clsjugador.cpp
+	<iostream>
+	"cstring"
+	"ClsJugador.h"
+	"Fecha.h"
+
+1747308567 source:c:\users\uriel\downloads\football-transfer-utn-main\funciones.cpp
+	<iostream>
+	"cstring"
+	"funciones.h"
+
+1749043174 c:\users\uriel\downloads\football-transfer-utn-main\funciones.h
+
+1750120446 source:c:\users\uriel\downloads\football-transfer-utn-main\main.cpp
+	<iostream>
+	"funciones.h"
+
+1750182245 source:c:\users\uriel\downloads\football-transfer-utn-main\src\clstransferencia.cpp
+	<iostream>
+	"ClsTransferencia.h"
+	"Fecha.h"
+	<iomanip>
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\clstransferencia.h
+	"Fecha.h"
+
+1750109917 source:c:\users\uriel\downloads\football-transfer-utn-main\src\clsclub.cpp
+	<iostream>
+	"cstring"
+	"ClsClub.h"
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\clsclub.h
+
+1750109917 source:c:\users\uriel\downloads\football-transfer-utn-main\src\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\fecha.h
+
+1750181591 source:c:\users\uriel\downloads\football-transfer-utn-main\src\clsestadistica.cpp
+	<iostream>
+	"ClsEstadistica.h"
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\clsestadistica.h
+
+1750109917 source:c:\users\uriel\downloads\football-transfer-utn-main\src\archivotransferencias.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ArchivoTransferencias.h"
+	"ClsTransferencia.h"
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\archivotransferencias.h
+	"ClsTransferencia.h"
+
+1750252996 source:e:\football-transfer-utn-main\main.cpp
+	<iostream>
+	"funciones.h"
+
+1750252996 source:e:\football-transfer-utn-main\src\archivotransferencias.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ArchivoTransferencias.h"
+	"ClsTransferencia.h"
+
+1750252996 e:\football-transfer-utn-main\include\archivotransferencias.h
+	"ClsTransferencia.h"
+
+1750252996 e:\football-transfer-utn-main\include\clstransferencia.h
+	"Fecha.h"
+
+1750252996 e:\football-transfer-utn-main\include\fecha.h
+
+1750252996 source:e:\football-transfer-utn-main\src\clsarchivojugador.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ClsArchivoJugador.h"
+
+1750252996 e:\football-transfer-utn-main\include\clsarchivojugador.h
+	"ClsJugador.h"
+
+1750252996 e:\football-transfer-utn-main\include\clsjugador.h
+	"Fecha.h"
+
+1750252996 source:e:\football-transfer-utn-main\src\clstransferencia.cpp
+	<iostream>
+	"ClsTransferencia.h"
+	"Fecha.h"
+	<iomanip>
+
+1750252996 source:e:\football-transfer-utn-main\src\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1750252996 source:e:\football-transfer-utn-main\src\clsclub.cpp
+	<iostream>
+	"cstring"
+	"ClsClub.h"
+
+1750252996 e:\football-transfer-utn-main\include\clsclub.h
+
+1750252996 source:e:\football-transfer-utn-main\src\clsestadistica.cpp
+	<iostream>
+	"ClsEstadistica.h"
+
+1750252996 e:\football-transfer-utn-main\include\clsestadistica.h
+
+1750252996 source:e:\football-transfer-utn-main\src\clsjugador.cpp
+	<iostream>
+	"cstring"
+	"ClsJugador.h"
+	"Fecha.h"
+	<iomanip>
+
+1750252996 source:e:\football-transfer-utn-main\src\funciones.cpp
+	<iostream>
+	"cstring"
+	"funciones.h"
+	"ClsTransferencia.h"
+	"ArchivoTransferencias.h"
+	"ClsArchivoEstadistica.h"
+	"ClsArchivoClub.h"
+	"ClsClub.h"
+	"ClsJugador.h"
+	"ClsEstadistica.h"
+	"ClsArchivoJugador.h"
+
+1750252996 e:\football-transfer-utn-main\include\funciones.h
+
+1750252996 source:e:\football-transfer-utn-main\src\clsarchivoclub.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ClsArchivoClub.h"
+
+1750252996 e:\football-transfer-utn-main\include\clsarchivoclub.h
+	"ClsClub.h"
+
+1750252996 source:e:\football-transfer-utn-main\src\clsarchivoestadistica.cpp
+	"ClsArchivoEstadistica.h"
+	<iostream>
+	"cstring"
+	"cstdio"
+
+1750252996 e:\football-transfer-utn-main\include\clsarchivoestadistica.h
+	"ClsEstadistica.h"
+
+1750109917 source:c:\users\uriel\downloads\football-transfer-utn-main\src\clsarchivoclub.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ClsArchivoClub.h"
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\clsarchivoclub.h
+	"ClsClub.h"
+
+1750109917 source:c:\users\uriel\downloads\football-transfer-utn-main\src\clsarchivoestadistica.cpp
+	"ClsArchivoEstadistica.h"
+	<iostream>
+	"cstring"
+	"cstdio"
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\clsarchivoestadistica.h
+	"ClsEstadistica.h"
+
+1750109917 source:c:\users\uriel\downloads\football-transfer-utn-main\src\clsarchivojugador.cpp
+	<iostream>
+	"cstring"
+	"cstdio"
+	"ClsArchivoJugador.h"
+
+1750109917 c:\users\uriel\downloads\football-transfer-utn-main\include\clsarchivojugador.h
+	"ClsJugador.h"
+
+1750124088 c:\users\uriel\downloads\football-transfer-utn-main\include\clsjugador.h
+	"Fecha.h"
+
+1750125557 source:c:\users\uriel\downloads\football-transfer-utn-main\src\clsjugador.cpp
+	<iostream>
+	"cstring"
+	"ClsJugador.h"
+	"Fecha.h"
+	<iomanip>
+
+1750181532 source:c:\users\uriel\downloads\football-transfer-utn-main\src\funciones.cpp
+	<iostream>
+	"cstring"
+	"funciones.h"
+	"ClsTransferencia.h"
+	"ArchivoTransferencias.h"
+	"ClsArchivoEstadistica.h"
+	"ClsArchivoClub.h"
+	"ClsClub.h"
+	"ClsJugador.h"
+	"ClsEstadistica.h"
+	"ClsArchivoJugador.h"
+
+1750172109 c:\users\uriel\downloads\football-transfer-utn-main\include\funciones.h
+
+1750252996 e:\football-transfer-utn-main\funciones.h
+
