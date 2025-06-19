@@ -4,6 +4,7 @@ using namespace std;
 #include "ClsJugador.h"
 #include "Fecha.h"
 #include<iomanip>
+#include "ClsArchivoJugador.h"
 /// SETTERS INICIALIZA VALOR
 ///GETTERS ACCEDE A LOS VALORES
 void Jugador::setNombre(const char* n) {
@@ -52,20 +53,71 @@ float Jugador::getValorMercado() {
 bool Jugador::getEstado(){ return estado;}
 
 void Jugador:: cargar() {
+    ArchivoJugador arcJ;
+    while (true) {
      cout<<"INGRESE ID JUGADOR: ";
      cin>> id;
      cin.ignore();
+     if (arcJ.buscarRegistro(id)==-1) {
+        break; //SIGUE
+     }
+     cout<<"ID DE JUGADOR EXISTENTE. INTENTELO DE NUEVO."<<endl;
+    }
     cout<<"INGRESE NOMBRE DEL JUGADOR: ";
     cin.getline(nombre, 30);
     cout<<"INGRESE POSICION DEL JUGADOR: ";
      cin.getline(posicion,20);
+     while (true) {
     cout<<"INGRESE VALOR DE MERCADO DEL JUGADOR: ";
     cin>> valorMercado;
     cin.ignore();
+    if (valorMercado >= 0) {
+        break; //sigue
+    }
+    cout<<"INGRESE NUMEROS POSITIVOS. INTENTALO DE NUEVO."<<endl;
+     }
     cout<<"INGRESE CLUB ACTUAL DEL JUGADOR: ";
     cin.getline(clubActual,30);
     fechaJugador.Cargar();
     estado=true;
+}
+
+void Jugador::modificarAltaJugador() {
+    ArchivoJugador arcJ;
+ int nuevoId;
+    // Cambiar ID solo si no existe otro con ese ID
+    while (true) {
+        cout << "INGRESE NUEVO ID DEL JUGADOR (O EL MISMO): ";
+
+        cin >> nuevoId;
+        if (nuevoId == id || arcJ.buscarRegistro(nuevoId) == -1) {
+            id = nuevoId;
+            break;
+        }
+        cout << "YA EXISTE OTRO JUGADOR CON ESE ID. INGRESE OTRO." << endl;
+    }
+    cin.ignore();
+        cout << "INGRESE NUEVO NOMBRE DEL JUGADOR: ";
+        cin.getline(nombre, 30);
+
+        cout << "INGRESE NUEVA POSICIÓN DEL JUGADOR: ";
+        cin.getline(posicion, 20);
+
+    while (true) {
+        cout << "INGRESE NUEVO VALOR DE MERCADO: ";
+        cin >> valorMercado;
+        if (valorMercado >= 0) break;
+        cout << "EL VALOR DEBE SER POSITIVO." << endl;
+    }
+
+    cin.ignore();
+
+        cout << "INGRESE NUEVO CLUB ACTUAL: ";
+        cin.getline(clubActual, 30);
+
+
+    fechaJugador.Cargar();
+    estado = true;
 }
 
 void Jugador::mostrar() {
@@ -79,4 +131,3 @@ void Jugador::mostrar() {
     cout<<endl;
     system("pause");
 }
-

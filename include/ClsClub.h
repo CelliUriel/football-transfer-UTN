@@ -25,8 +25,8 @@ public:
     int getCantJugadores();
     int getAnioCreacion();
     bool getEstado();
-
     void cargar();
+    void ModificarAltaClub(int idActual);
     void mostrar();
 };
 

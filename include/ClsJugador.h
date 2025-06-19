@@ -32,6 +32,7 @@ public:
 
     bool getEstado();
     void cargar();
+    void modificarAltaJugador();
     void mostrar();
 };
 #endif // CLSJUGADOR_H

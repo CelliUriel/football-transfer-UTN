@@ -24,6 +24,7 @@ int getIdClubAnterior();
 int getIdClubDestino();
 bool getEstado();
 void cargar();
+void ModificarCargaTransferencia();
 void mostrar();
 };
 

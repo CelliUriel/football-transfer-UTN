@@ -163,7 +163,7 @@ void menuEstadistica(){
         cin>>idJugador;
              bajaEstadisticas(idJugador);
              break;
-        case 3:cout<<"Ingrese el ID del jugador a dar de baja"<<endl;
+        case 3:cout<<"Ingrese el ID del jugador a modificar"<<endl;
         cin>>idJugador;
              modificarEstadisticas(idJugador);
         case 4: listarEstadisticas();
@@ -271,7 +271,7 @@ void modificarJugador(int id) {
     ArchivoJugador arc;
     int pos = arc.buscarRegistro(id);
     if (pos == -1) {
-        cout << "Jugador no encontrado.\n";
+        cout << "Jugador no encontrado."<<endl;
         system("pause");
         return;
     }
@@ -281,7 +281,7 @@ void modificarJugador(int id) {
 
     j.mostrar();  // mostrar actual
     cout<<"Ingrese los nuevos datos: "<<endl;
-    j.cargar();  // metodo donde pedís nuevos datos
+    j.modificarAltaJugador();  // metodo donde pedís nuevos datos
     arc.modificarRegistro(j, pos);
 }
 
@@ -314,7 +314,7 @@ void bajaClub(int id) {
    ArchivoClub arc;
     int pos = arc.buscarRegistro(id);
     if (pos == -1) {
-        cout << "Club no encontrado.\n";
+        cout << "Club no encontrado."<<endl;
         system("pause");
         return;
     }
@@ -327,7 +327,7 @@ void modificarClub(int id) {
     ArchivoClub arc;
     int pos = arc.buscarRegistro(id);
     if (pos == -1) {
-        cout << "Club no encontrado.\n";
+        cout << "Club no encontrado."<<endl;
        system("pause");
        return;
 
@@ -339,7 +339,7 @@ void modificarClub(int id) {
 
     c.mostrar();  // mostrar actual
     cout<<"Ingrese los nuevos datos: "<<endl;
-    c.cargar();  // metodo donde pedís nuevos datos
+    c.ModificarAltaClub(id);  // metodo donde pedís nuevos datos
     arc.modificarRegistro(c, pos);
 }
 

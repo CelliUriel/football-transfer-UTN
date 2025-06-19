@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 #include "ClsEstadistica.h"
+#include "ClsArchivoEstadistica.h"
 void Estadisticas:: setTemporada(int t) {temporada=t;}
 void Estadisticas::setGoles(int g) {goles=g;}
 void Estadisticas::setIdJugador(int i){idJugador=i;}
@@ -16,8 +17,15 @@ int Estadisticas:: getPartidosJugados() {return partidosJugados;}
 bool Estadisticas::getEstado(){ return estado;}
 
 void Estadisticas:: cargar() {
+    ArchivoEstadistica arcE;
+    while (true) {
     cout<<"INGRESE ID JUGADOR: "; cin>> idJugador;
     cin.ignore();
+    if(arcE.buscarRegistro(idJugador)!=-1) {
+        break; //sigue
+    }
+    cout<<"ID DE JUGADOR NO EXISTE. INTENTALO DE NUEVO."<<endl;
+    }
     cout<<"INGRESE TEMPORADA: "; cin>> temporada;
     cout<<"INGRESE GOLES DEL JUGADOR: "; cin>> goles;
     cout<<"INGRESE ASISTENCIAS DEL JUGADOR: "; cin>> asistencias;
