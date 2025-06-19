@@ -10,6 +10,7 @@ using namespace std;
 #include "ClsJugador.h"
 #include "ClsEstadistica.h"
 #include "ClsArchivoJugador.h"
+#include <iomanip>
 
 
 void menuPrincipal () {
@@ -22,6 +23,7 @@ void menuPrincipal () {
         cout << "2. Gestionar Jugadores" << endl;
         cout << "3. Gestionar Estadisticas" << endl;
         cout << "4. Gestionar Clubes" << endl;
+        cout << "5. Registros"<<endl;
         cout << "0. Salir" << endl;
         cout << "Seleccione una opcion: ";
         cin >> opcion;
@@ -31,6 +33,7 @@ void menuPrincipal () {
             case 2: menuJugador(); break;
             case 3: menuEstadistica(); break;
             case 4: menuClub(); break;
+            case 5: menuRegistros(); break;
             case 0: cout << "Saliendo del programa..." << endl; break;
             default:
                 cout << "Opcion invalida. Intente de nuevo." << endl;
@@ -40,6 +43,33 @@ void menuPrincipal () {
     }
 
 }
+
+void menuRegistros(){
+    int r = -1;
+    while (r!=0) {
+        cout<<"====MENU REGISTROS===="<<endl;
+        cout<<"1. Club con mayor gasto"<<endl;
+        cout<<"2. Ordenar clubes por gasto"<<endl;
+        cout<<"3. Goles por jugador"<<endl;
+        cout<<"4. Top 5 transferencias mas caras"<<endl;
+        cout<<"0. Volver"<<endl;
+        cin>>r;
+
+        switch (r) {
+        case 1: RegistroClubMayorGasto();
+        break;
+        case 2: ordenarClubesPorGasto();
+        break;
+        case 3: golesPorJugador();
+        break;
+        case 4: mostrarTop5TransferenciasMasCaras();
+        break;
+        case 0: break;
+        default: cout<<"Opcion invalida. Intente de nuevo." << endl;
+        system ("pause");
+        }
+        }
+    }
 
 void menuTransferencia(){
     int t = -1;
@@ -166,6 +196,7 @@ void menuEstadistica(){
         case 3:cout<<"Ingrese el ID del jugador a modificar"<<endl;
         cin>>idJugador;
              modificarEstadisticas(idJugador);
+             break;
         case 4: listarEstadisticas();
         break;
         case 0: break;
@@ -412,4 +443,265 @@ void listarEstadisticas() {
 
 
     }
+}
+
+void RegistroClubMayorGasto() {
+    ArchivoClub archivo("club.dat");
+    int cantidadClubes = archivo.contarRegistros();
+
+    if (cantidadClubes <= 0) {
+        cout << "No hay clubes cargados." << endl;
+        return;
+    }
+
+    ArchivoTransferencia archivot("transferencia.dat");
+    int cantidadTransferencias = archivot.contarRegistros();
+
+    if (cantidadTransferencias <= 0) {
+        cout << "No hay transferencias cargadas." << endl;
+        return;
+    }
+
+    // Reservamos memoria para almacenar gastos por club
+    int* idClub = new int[cantidadClubes]{};
+    float* gastosClub = new float[cantidadClubes]{};
+
+    for (int i = 0; i < cantidadTransferencias; i++) {
+        Transferencia registro = archivot.leerRegistro(i);
+        int id = registro.getIdClubDestino();
+        float monto = registro.getMonto();
+
+        bool encontrado = false;
+        for (int j = 0; j < cantidadClubes; j++) {
+            if (idClub[j] == id) {
+                gastosClub[j] += monto;
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            for (int j = 0; j < cantidadClubes; j++) {
+                if (idClub[j] == 0) {
+                    idClub[j] = id;
+                    gastosClub[j] = monto;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Buscar el club con mayor gasto
+    float maxGasto = 0.0f;
+    int idMax = -1;
+    for (int i = 0; i < cantidadClubes; i++) {
+        if (gastosClub[i] > maxGasto) {
+            maxGasto = gastosClub[i];
+            idMax = idClub[i];
+        }
+    }
+
+    if (idMax != -1) {
+        cout << "El ID del club que mas gasto es " << idMax << ", con $" <<fixed<<setprecision(2)<<maxGasto << " gastados." << endl;
+    } else {
+        cout << "No se encontraron gastos registrados." << endl;
+    }
+
+    delete[] idClub;
+    delete[] gastosClub;
+}
+
+void mostrarTop5TransferenciasMasCaras() {
+    ArchivoTransferencia archivo;
+    int cantidad = archivo.contarRegistros();
+
+    if (cantidad == 0) {
+        cout << "No hay transferencias cargadas." << endl;
+        return;
+    }
+
+    //  Reservar memoria dinámica
+    Transferencia* lista = new Transferencia[cantidad];
+
+    //  Leer todas las transferencias del archivo
+    for (int i = 0; i < cantidad; i++) {
+        lista[i] = archivo.leerRegistro(i);
+    }
+
+    //   selection sort de mayor a menor por monto
+    for (int i = 0; i < cantidad - 1; i++) {
+        int posMax = i;
+        for (int j = i + 1; j < cantidad; j++) {
+            if (lista[j].getMonto() > lista[posMax].getMonto()) {
+                posMax = j;
+            }
+        }
+
+        if (posMax != i) {
+            Transferencia aux = lista[i];
+            lista[i] = lista[posMax];
+            lista[posMax] = aux;
+        }
+    }
+
+    //  Mostrar los 5 primeros
+    cout << "==== TOP 5 FICHAJES MAS CAROS ====" << endl;
+    for (int i = 0; i < 5 && i < cantidad; i++) {
+        cout << "ID Transferencia: " << lista[i].getIdTransferencia()
+             << " | Monto: $" <<fixed<<setprecision(2)<< lista[i].getMonto() << endl;
+    }
+
+    //  Liberar memoria
+    delete[] lista;
+}
+
+void ordenarClubesPorGasto(){
+        ArchivoClub archivo("club.dat");
+    int cantidadClubes = archivo.contarRegistros();
+
+    if (cantidadClubes <= 0) {
+        cout << "No hay clubes cargados." << endl;
+        return;
+    }
+
+    ArchivoTransferencia archivot("transferencia.dat");
+    int cantidadTransferencias = archivot.contarRegistros();
+
+    if (cantidadTransferencias <= 0) {
+        cout << "No hay transferencias cargadas." << endl;
+        return;
+    }
+
+    // Reservamos memoria para almacenar gastos por club
+    int* idClub = new int[cantidadClubes]{};
+    float* gastosClub = new float[cantidadClubes]{};
+
+    for (int i = 0; i < cantidadTransferencias; i++) {
+        Transferencia registro = archivot.leerRegistro(i);
+        int id = registro.getIdClubDestino();
+        float monto = registro.getMonto();
+
+        bool encontrado = false;
+        for (int j = 0; j < cantidadClubes; j++) {
+            if (idClub[j] == id) {
+                gastosClub[j] += monto;
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            for (int j = 0; j < cantidadClubes; j++) {
+                if (idClub[j] == 0) {
+                    idClub[j] = id;
+                    gastosClub[j] = monto;
+                    break;
+                }
+            }
+        }
+    }
+
+
+
+    // Ordenar clubes por gasto (de mayor a menor)
+for (int i = 0; i < cantidadClubes - 1; i++) {
+    int maxIndex = i;
+    for (int j = i + 1; j < cantidadClubes; j++) {
+        if (gastosClub[j] > gastosClub[maxIndex]) {
+            maxIndex = j;
+        }
+    }
+    if (maxIndex != i) {
+        // Intercambiar gasto
+        float auxGasto = gastosClub[i];
+        gastosClub[i] = gastosClub[maxIndex];
+        gastosClub[maxIndex] = auxGasto;
+
+        // Intercambiar ID correspondiente
+        int auxId = idClub[i];
+        idClub[i] = idClub[maxIndex];
+        idClub[maxIndex] = auxId;
+    }
+}
+
+cout << "\nListado de clubes ordenado por gasto (mayor a menor):\n";
+for (int i = 0; i < cantidadClubes; i++) {
+    if (idClub[i] != 0) { // Solo mostramos IDs válidos
+        cout << "ID Club: " << idClub[i]
+             << " - Gasto: $" << fixed << setprecision(2) << gastosClub[i] << endl;
+    }
+}
+    delete[] idClub;
+    delete[] gastosClub;
+}
+
+void golesPorJugador(){
+    ArchivoJugador archivoj("jugador.dat");
+    int cantidadJugadores = archivoj.contarRegistros();
+        if (cantidadJugadores <= 0) {
+        cout << "No hay jugadores cargados." << endl;
+        return;
+    }
+    ArchivoEstadistica archivo ("estadistica.dat");
+    int cantidadEstadisticas = archivo.contarRegistros();
+        if (cantidadEstadisticas <= 0) {
+        cout << "No hay estadisticas cargadas." << endl;
+        return;
+    }
+    int* idJugador = new int[cantidadJugadores]{};
+    int* GolesPJugador = new int[cantidadJugadores]{};
+
+        for (int i = 0; i < cantidadEstadisticas; i++) {
+        Estadisticas registro = archivo.leerRegistro(i);
+        int id = registro.getIdJugador();
+        int goles = registro.getGoles();
+
+        bool encontrado = false;
+        for (int j = 0; j < cantidadEstadisticas; j++) {
+            if (idJugador[j] == id) {
+                GolesPJugador[j] += goles;
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            for (int j = 0; j < cantidadEstadisticas; j++) {
+                if (idJugador[j] == 0) {
+                    idJugador[j] = id;
+                    GolesPJugador[j] += goles;
+                    break;
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < cantidadJugadores - 1; i++) {
+    int maxIndex = i;
+    for (int j = i + 1; j < cantidadJugadores; j++) {
+        if (GolesPJugador[j] > GolesPJugador[maxIndex]) {
+            maxIndex = j;
+        }
+    }
+    if (maxIndex != i) {
+        // Intercambiar gasto
+        int auxGoles = GolesPJugador[i];
+        GolesPJugador[i] = GolesPJugador[maxIndex];
+        GolesPJugador[maxIndex] = auxGoles;
+
+        // Intercambiar ID correspondiente
+        int auxId = idJugador[i];
+        idJugador[i] = idJugador[maxIndex];
+        idJugador[maxIndex] = auxId;
+    }
+}
+cout << "\nListado de jugadores ordenado por goles (mayor a menor):\n";
+for (int i = 0; i < cantidadJugadores; i++) {
+    if (idJugador[i] != 0) { // Solo mostramos IDs válidos
+        cout << "ID jugador: " << idJugador[i]
+             << " - goles: " << GolesPJugador[i] << endl;
+    }
+}
+    delete[] idJugador;
+    delete[] GolesPJugador;
 }

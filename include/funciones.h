@@ -18,12 +18,17 @@ void altaEstadisticas();
 void bajaEstadisticas(int id);
 void modificarEstadisticas(int id);
 void listarEstadisticas();
+void RegistroClubMayorGasto();
+void mostrarTop5TransferenciasMasCaras();
+void ordenarClubesPorGasto();
+void golesPorJugador();
 
 void menuClub();
 void menuEstadistica();
 void menuJugador();
 void menuTransferencia();
 void menuPrincipal();
+void menuRegistros();
 
 
 
